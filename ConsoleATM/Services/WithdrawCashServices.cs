@@ -5,10 +5,11 @@ namespace ConsoleATM.Services
     internal class WithdrawCashServices
     {
         LoggerServices loggerServices = new V1Logger();
+        BalanceServices balanceServices = new BalanceServices();
 
         decimal userCash = 100;
 
-        public void WithdrawUserCash()
+        public void GetWithdrawUserCash()
         {
             loggerServices.LogInformation("How much cash you want to withdraw?");
             loggerServices.LogInformation("1. 10$\n2. 20$\n3. 50$\n4. 100$\n5. Another amount\n");
@@ -34,13 +35,16 @@ namespace ConsoleATM.Services
                     userCash -= 10;
                     break;
                 default:
-                    userCash -= userCashValue;
+                    try
+                    {
+                        userCash -= userCashValue;
+                    }
+                    catch(Exception exception)
+                    {
+                        loggerServices.LogInformation(exception.Message);
+                    }
                     break;
-            }
 
-            if( userCash < 0)
-            {
-                loggerServices.LogInformation("You don't have enough money. Try with another amount of money");
             }
         }
     }

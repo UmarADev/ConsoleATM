@@ -6,9 +6,14 @@ namespace ConsoleATM.Services
     {
         LoggerServices loggerServices = new V1Logger();
 
-        public void ShowBalance(decimal balance)
+        public BalanceServices()
         {
-            loggerServices.LogInformation(balance);
+            loggerServices.LogInformation("Your current balance is: 100");
+        }
+
+        public void GetBalance(decimal balance)
+        {
+            loggerServices.LogInformation($"Your current balance is: {balance}");
         }
     }
 }

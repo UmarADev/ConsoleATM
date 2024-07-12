@@ -84,7 +84,7 @@ namespace ConsoleATM.Services
         public void ChangePhoneNumber()
         {
             bool isCorrect = false;
-            while(isCorrect)
+            while(!isCorrect)
             {
                 try
                 {
