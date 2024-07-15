@@ -56,12 +56,20 @@ namespace ConsoleATM.Services
                         string withdrawCashInput = Console.ReadLine();
                         decimal withdrawCash = Convert.ToDecimal(withdrawCashInput);
 
-                        withdrawBalance -= withdrawCash;
-                        PrintMessage();
+                        if (withdrawCash > withdrawBalance)
+                        {
+                            loggerService.LogInformation($"The withdrawal amount cannot exceed {withdrawBalance}");
+                            break;
+                        }
+                        else
+                        {
+                            withdrawBalance -= withdrawCash;
+                            PrintMessage();
+                        }
                         break;
 
                     default:
-                        break;
+                        throw new Exception("Please use the action which shown to you above");
                 }
             }
             catch (Exception exception)

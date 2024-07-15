@@ -17,35 +17,47 @@ namespace ConsoleATM.Services
 
         public void GetUserPassword()
         {
-            loggerService.LogInformation("Please enter your password: ");
-            userPassword = Console.ReadLine();
+            bool isCorrect = false;
+            while(!isCorrect)
+            {
+                loggerService.LogInformation("Please enter your password: ");
+                userPassword = Console.ReadLine();
 
-            loggerService.LogInformation("Your password added succesfully!");
+                if (userPassword == null || userPassword.Length != 4)
+                {
+                    loggerService.LogInformation("Password must be 4 digit number!");
+                }
+                else
+                {
+                    loggerService.LogInformation("Your password added succesfully!");
+                    isCorrect = true;
+                }
+            }
         }
 
         public void GetUserPhone()
         {
-            loggerServices.LogInformation("Please enter your number: +998 ");
+            loggerService.LogInformation("Please enter your number: +998 ");
             userPhone = Console.ReadLine();
 
-            loggerServices.LogInformation("Your phone added succesfully!");
+            loggerService.LogInformation("Your phone added succesfully!");
         }
 
         public void ChangeUserPassword()
         {
             for (int i = 0; i < 3; i++)
             {
-                loggerServices.LogInformation("Enter your password: ");
+                loggerService.LogInformation("Enter your password: ");
                 string pin = Console.ReadLine();
 
                 if(pin != userPassword)
                 {
                     if (i == 2)
                     {
-                        loggerServices.LogInformation("Too much effort. Try again later.");
+                        loggerService.LogInformation("Too much effort. Try again later.");
                         break;
                     }
-                    loggerServices.LogInformation("Incorrect password. Try again.");
+                    loggerService.LogInformation("Incorrect password. Try again.");
                 }
                 else
                 {
@@ -53,7 +65,7 @@ namespace ConsoleATM.Services
                     {
                         try
                         {
-                            loggerServices.LogInformation("Enter new password: ");
+                            loggerService.LogInformation("Enter new password: ");
                             string newPassword = Console.ReadLine();
 
                             if (newPassword.Length != 4)
@@ -61,27 +73,27 @@ namespace ConsoleATM.Services
                                 throw new ArgumentOutOfRangeException("PIN must be a 4-digit number.");
                             }
                             
-                            loggerServices.LogInformation("Re-enter a new password: ");
+                            loggerService.LogInformation("Re-enter a new password: ");
                             string newPassword2 = Console.ReadLine();
 
                             if (newPassword != newPassword2)
                             {
-                                loggerServices.LogInformation("The passwords must be the same. Try again.");
+                                loggerService.LogInformation("The passwords must be the same. Try again.");
                             }
                             else
                             {
                                 userPassword = newPassword;
-                                loggerServices.LogInformation("PIN successfully changed.");
+                                loggerService.LogInformation("PIN successfully changed.");
                                 break;
                             }
                         }
                         catch (ArgumentException argumentException)
                         {
-                            loggerServices.LogInformation($"{argumentException.Message}. Try again");
+                            loggerService.LogInformation($"{argumentException.Message}. Try again");
                         }
                         catch (Exception exception)
                         {
-                            loggerServices.LogInformation($"{exception.Message}. Try again");
+                            loggerService.LogInformation($"{exception.Message}. Try again");
                         }
                     }
                 }
@@ -95,7 +107,7 @@ namespace ConsoleATM.Services
             {
                 try
                 {
-                    loggerServices.LogInformation("Enter your phone number: ");
+                    loggerService.LogInformation("Enter your phone number: ");
                     string phoneNumber = Console.ReadLine();
 
                     if (string.IsNullOrEmpty(phoneNumber))
@@ -112,16 +124,16 @@ namespace ConsoleATM.Services
                     }
 
                     userPhone = phoneNumber;
-                    loggerServices.LogInformation("Phone number successfully changed");
+                    loggerService.LogInformation("Phone number successfully changed");
                     isCorrect = true;
                 }
                 catch (ArgumentException argumentException)
                 {
-                    loggerServices.LogInformation   (argumentException.Message);
+                    loggerService.LogInformation   (argumentException.Message);
                 }
                 catch (Exception exception)
                 {
-                    loggerServices.LogInformation(exception.Message);
+                    loggerService.LogInformation(exception.Message);
                 }
             }
         }
