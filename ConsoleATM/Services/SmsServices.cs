@@ -9,19 +9,20 @@ namespace ConsoleATM.Services
         private string userPassword = "0000";
         private string userPhone = "123456789";
 
-        //bool pinChanged = false;
-        //bool phoneChanged = false;
-
         public void GetUserPassword()
         {
             loggerServices.LogInformation("Please enter your password: ");
             userPassword = Console.ReadLine();
+
+            loggerServices.LogInformation("Your password added succesfully!");
         }
 
         public void GetUserPhone()
         {
             loggerServices.LogInformation("Please enter your number: +998 ");
             userPhone = Console.ReadLine();
+
+            loggerServices.LogInformation("Your phone added succesfully!");
         }
 
         public void ChangeUserPassword()

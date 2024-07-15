@@ -22,9 +22,9 @@ namespace ConsoleATM
 
                 switch(convertedUserChoise)
                 {
-                    case 1:
-                        balanceServices.GetBalance();
-                        break;
+                    //case 1:
+                    //    balanceServices.GetBalance();
+                    //    break;
 
                     case 2:
                         withdrawCashServices.GetWithdrawUserCash();

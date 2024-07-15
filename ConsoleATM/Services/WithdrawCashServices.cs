@@ -44,8 +44,9 @@ namespace ConsoleATM.Services
                         loggerServices.LogInformation(exception.Message);
                     }
                     break;
-
             }
+
+            loggerServices.LogInformation("Please get your cash");
         }
     }
 }
