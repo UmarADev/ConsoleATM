@@ -150,18 +150,18 @@ namespace ConsoleATM.Services
             }
         }
 
-        public string CheckUserByPassword(string password)
+        public bool CheckUserByPassword(string password)
         {
             while (true)
             {
                 if (password == userPassword)
                 {
-                    return password;
+                    return true;
                     break;
                 }
                 else
                 {
-                    return "The password was entered incorrectly";
+                    return false;
                 }
             }
         }

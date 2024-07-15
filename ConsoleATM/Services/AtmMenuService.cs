@@ -21,7 +21,7 @@ namespace ConsoleATM.Services
             loggerService.LogInformation("\nChoose one section below!!!");
             loggerService.LogInformation("1. Balance check.");
             loggerService.LogInformation("2. Withdraw cash.");
-            loggerService.LogInformation("3. Spending");
+            loggerService.LogInformation("3. Sms Service");
             loggerService.LogInformation("4. Exit the program");
         }
     }

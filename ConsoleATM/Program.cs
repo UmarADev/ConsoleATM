@@ -27,15 +27,59 @@ namespace ConsoleATM
 
                 loggerService.LogInformation("Enter your password to use the program!!!");
 
-                string userInputPassword;
+                string userInputPassword = Console.ReadLine();
 
                 string isContinue;
 
-                if (userInputPassword == password.user)
-            }
-            catch
-            {
+                bool correctPassword = password.CheckUserByPassword(userInputPassword);
 
+                do
+                {
+                    if (correctPassword == true)
+                    {
+                        decimal startBalance = 100;
+
+                        menu.WriteAtmMenu();
+
+                        loggerService.LogInformation("Enter your choice: ");
+
+                        string userInputValue = Console.ReadLine();
+                        int userInput = Convert.ToInt32(userInputValue);
+
+                        switch (userInput)
+                        {
+                            case 1:
+
+                                balance.ShowBalance(startBalance);
+                                break;
+
+                            case 2:
+                                balance.GetWithdrawCash(startBalance);
+                                break;
+
+                            case 3:
+                                password.GetUserPhone();
+                                password.GetUserPassword();
+                                break;
+
+                            case 4:
+                                loggerService.LogInformation("Exit the program....");
+                                loggerService.LogInformation("Thank you for using our program");
+                                return;
+
+                            default:
+                                loggerService.LogInformation("Wrong choice. Try again.");
+                                break;
+                        }
+                    }
+
+                    loggerService.LogInformation("\nDo you want to continue? (yes / no)");
+                    isContinue = Console.ReadLine();
+                } while (isContinue.ToLower() == "yes" || isContinue.ToLower() == "y");
+            }
+            catch (Exception exception)
+            {
+                loggerService.LogInformation($"{exception.Message}\nRestart the program");
             }
         }
     }
