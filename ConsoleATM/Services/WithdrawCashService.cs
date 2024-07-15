@@ -2,17 +2,15 @@
 
 namespace ConsoleATM.Services
 {
-    internal class WithdrawCashServices
+    internal class WithdrawCashService
     {
-        LoggerServices loggerServices = new V1Logger();
-        BalanceServices balanceServices = new BalanceServices();
+        ILoggerService loggerServices = new V1LoggerService();
+        BalanceService balanceServices = new BalanceService();
 
         decimal userCash = 100;
 
         public void GetWithdrawUserCash()
         {
-            loggerServices.LogInformation("How much cash you want to withdraw?");
-            loggerServices.LogInformation("1. 10$\n2. 20$\n3. 50$\n4. 100$\n5. Another amount\n");
 
             string userChoise = Console.ReadLine();
             decimal userCashValue = Convert.ToDecimal(userChoise);

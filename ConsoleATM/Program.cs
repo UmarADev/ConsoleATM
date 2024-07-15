@@ -7,11 +7,11 @@ namespace ConsoleATM
     {
         static void Main(string[] args)
         {
-            AtmMenuServices atmMenuServices = new AtmMenuServices();
-            BalanceServices balanceServices = new BalanceServices();
-            SmsServices smsServices = new SmsServices();
-            WithdrawCashServices withdrawCashServices = new WithdrawCashServices();
-            LoggerServices loggerServices = new V1Logger();
+            AtmMenuService atmMenuServices = new AtmMenuService();
+            BalanceService balanceServices = new BalanceService();
+            SmsService smsServices = new SmsService();
+            WithdrawCashService withdrawCashServices = new WithdrawCashService();
+            ILoggerServices loggerServices = new V1LoggerService();
             bool isContinue = true;
 
             while (isContinue)

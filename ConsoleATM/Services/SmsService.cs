@@ -1,20 +1,26 @@
 ﻿using System;
+using TarteebBank.Services;
 
 namespace ConsoleATM.Services
 {
-    internal class SmsServices
+    internal class SmsService
     {
-        LoggerServices loggerServices = new V1Logger();
+        private ILoggerService loggerService;
 
         private string userPassword = "0000";
         private string userPhone = "123456789";
 
+        public SmsService()
+        {
+            this.loggerService = new V1LoggerService();
+        }
+
         public void GetUserPassword()
         {
-            loggerServices.LogInformation("Please enter your password: ");
+            loggerService.LogInformation("Please enter your password: ");
             userPassword = Console.ReadLine();
 
-            loggerServices.LogInformation("Your password added succesfully!");
+            loggerService.LogInformation("Your password added succesfully!");
         }
 
         public void GetUserPhone()
