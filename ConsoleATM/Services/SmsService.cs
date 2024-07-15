@@ -37,10 +37,22 @@ namespace ConsoleATM.Services
 
         public void GetUserPhone()
         {
-            loggerService.LogInformation("Please enter your number: +998 ");
-            userPhone = Console.ReadLine();
+            bool isCorrect = false;
+            while(!isCorrect)
+            {
+                loggerService.LogInformation("Please enter your number: +998 ");
+                userPhone = Console.ReadLine();
 
-            loggerService.LogInformation("Your phone added succesfully!");
+                if (userPassword == null || userPassword.Length != 9)
+                {
+                    loggerService.LogInformation("Phone number must be 9 digit number!");
+                }
+                else
+                {
+                    loggerService.LogInformation("Your phone added succesfully!");
+                    isCorrect = true;
+                }
+            }
         }
 
         public void ChangeUserPassword()
