@@ -1,5 +1,6 @@
 ﻿using ConsoleATM.Services;
 using System;
+using TarteebBank.Services;
 
 namespace ConsoleATM
 {
@@ -7,37 +8,35 @@ namespace ConsoleATM
     {
         static void Main(string[] args)
         {
-            AtmMenuService atmMenuServices = new AtmMenuService();
-            BalanceService balanceServices = new BalanceService();
-            SmsService smsServices = new SmsService();
-            WithdrawCashService withdrawCashServices = new WithdrawCashService();
-            ILoggerServices loggerServices = new V1LoggerService();
-            bool isContinue = true;
+            ILoggerService loggerService = new V1LoggerService();
 
-            while (isContinue)
+            try
             {
-                atmMenuServices.WriteAtmMenu();
-                string userChoise = Console.ReadLine();
-                int convertedUserChoise = Convert.ToInt32(userChoise);
+                var menu = new AtmMenuService();
+                var password = new SmsService();
+                var balance = new BalanceService();
 
-                switch(convertedUserChoise)
-                {
-                    //case 1:
-                    //    balanceServices.GetBalance();
-                    //    break;
+                Console.ForegroundColor = ConsoleColor.Magenta;
+                loggerService.LogInformation("Create a unique password to use the program!!!");
+                password.GetUserPassword();
 
-                    case 2:
-                        withdrawCashServices.GetWithdrawUserCash();
-                        break;
+                Console.Clear();
 
-                    case 3:
-                        smsServices.GetUserPassword();
-                        smsServices.GetUserPhone();
-                        break;
-                }
+                loggerService.LogInformation("Password created!\n");
+                loggerService.LogInformation("Welcome to TarteebBank!!!");
+
+                loggerService.LogInformation("Enter your password to use the program!!!");
+
+                string userInputPassword;
+
+                string isContinue;
+
+                if (userInputPassword == password.user)
             }
+            catch
+            {
 
-
+            }
         }
     }
 }
