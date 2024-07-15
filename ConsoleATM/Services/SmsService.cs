@@ -43,7 +43,7 @@ namespace ConsoleATM.Services
                 loggerService.LogInformation("Please enter your number: +998 ");
                 userPhone = Console.ReadLine();
 
-                if (userPassword == null || userPassword.Length != 9)
+                if (userPassword == null || userPhone.Length != 9)
                 {
                     loggerService.LogInformation("Phone number must be 9 digit number!");
                 }

@@ -11,8 +11,8 @@ namespace ConsoleATM.Services
     {
         public void LogInformation(string message)
         {
-            Console.BackgroundColor = ConsoleColor.Cyan;
-            Console.ForegroundColor = ConsoleColor.DarkBlue;
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine($"{message}");
         }
+    }
 }

@@ -8,7 +8,7 @@ namespace ConsoleATM
     {
         static void Main(string[] args)
         {
-            ILoggerService loggerService = new V1LoggerService();
+            ILoggerService loggerService = new V2LoggerService();
 
             try
             {
@@ -16,7 +16,6 @@ namespace ConsoleATM
                 var password = new SmsService();
                 var balance = new BalanceService();
 
-                Console.ForegroundColor = ConsoleColor.Magenta;
                 loggerService.LogInformation("Create a unique password to use the program!!!");
                 password.GetUserPassword();
 
